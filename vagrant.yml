@@ -17,5 +17,5 @@
     - db
     - rabbitmq
     - web
-    - celery
+    # - celery
     - nginx
