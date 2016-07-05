@@ -1,9 +1,9 @@
 ---
 
-git_repo: https://github.com/jcalazan/youtube-audio-dl.git
+git_repo: https://github.com/ciudadanointeligente/write-it.git
 
-project_name: youtube-audio-dl
-application_name: youtubeadl
+project_name: writeinpublic
+application_name: writeit
 
 ssl_crt: |
   -----BEGIN CERTIFICATE-----
