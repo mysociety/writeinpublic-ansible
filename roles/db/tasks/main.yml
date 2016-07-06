@@ -2,7 +2,10 @@
 - name: Install MySQL
   apt: name={{ item }} update_cache={{ update_apt_cache }} state=installed
   with_items:
+    - mysql-common
     - mysql-server
+    - libmysqlclient-dev
+    - python-mysqldb
   tags: packages
 
 - name: Ensure the MySQL service is running
