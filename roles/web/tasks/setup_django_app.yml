@@ -6,6 +6,13 @@
 - name: Install packages required in production by the Django app inside virtualenv
   pip: virtualenv={{ virtualenv_path }} requirements={{ project_path }}/requirements-production.txt
 
+- name: Copy local_settings.py
+  template: src=local_settings.py.j2
+            dest={{ project_path }}/{{ application_name }}/local_settings.py
+            owner={{ gunicorn_user }}
+            group={{ gunicorn_group }}
+            mode=0640
+
 - name: Run the Django syncdb command
   django_manage:
     command: syncdb
