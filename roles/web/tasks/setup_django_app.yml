@@ -3,6 +3,9 @@
 - name: Install packages required by the Django app inside virtualenv
   pip: virtualenv={{ virtualenv_path }} requirements={{ requirements_file }}
 
+- name: Install packages required in production by the Django app inside virtualenv
+  pip: virtualenv={{ virtualenv_path }} requirements={{ project_path }}/requirements-production.txt
+
 - name: Run the Django syncdb command
   django_manage:
     command: syncdb
