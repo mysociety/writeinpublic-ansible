@@ -10,3 +10,9 @@
 
 - name: Ensure the MySQL service is running
   service: name=mysql state=started enabled=yes
+
+- name: Ensure database is created
+  mysql_db: name={{ db_name }} state=present
+
+- name: Ensure user has access to the database
+  mysql_user: name={{ db_user }} password={{ db_password }} state=present priv={{ db_name }}.*:ALL
