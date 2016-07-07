@@ -12,6 +12,7 @@
             owner={{ gunicorn_user }}
             group={{ gunicorn_group }}
             mode=0640
+  notify: restart application
 
 - name: Run the Django syncdb command
   django_manage:
