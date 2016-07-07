@@ -15,3 +15,6 @@ staging
 
 [email:children]
 staging
+
+[search:children]
+staging

@@ -7,3 +7,5 @@
 - include: worker.yml
 
 - include: email.yml
+
+- include: search.yml

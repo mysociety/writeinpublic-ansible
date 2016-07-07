@@ -1,0 +1,16 @@
+---
+
+- name: Add elasticsearch Public Signing Key
+  apt_key: url=https://packages.elastic.co/GPG-KEY-elasticsearch state=present
+
+- name: Add elasticsearch apt repositories
+  apt_repository: repo='deb https://packages.elastic.co/elasticsearch/2.x/debian stable main' state=present
+
+- name: Install elasticsearch
+  apt: name={{ item }} update_cache=yes state=installed
+  with_items:
+    - openjdk-7-jre
+    - elasticsearch
+
+- name: Ensure elasticsearch is running
+  service: name=elasticsearch state=started enabled=yes

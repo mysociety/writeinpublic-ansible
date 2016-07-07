@@ -1,0 +1,14 @@
+---
+
+- name: Provision a {{ application_name }} search server
+  hosts: search
+  become: yes
+  become_user: root
+  vars:
+    - update_apt_cache: yes
+  vars_files:
+    - env_vars/base.yml
+    - env_vars/{{ env }}.yml
+
+  roles:
+    - search
