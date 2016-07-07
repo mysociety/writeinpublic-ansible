@@ -19,23 +19,20 @@
 
 - name: Create the folder for the email scripts
   file: path={{ email_scripts_dir }}
-        owner={{ gunicorn_user }}
-        group={{ gunicorn_group }}
+        owner={{ application_name }}
         mode=0774
         state=directory
 
 - name: Add handle_incoming_email script
   template: src=handle_incoming_email.j2
             dest={{ handle_incoming_email_script }}
-            owner={{ gunicorn_user }}
-            group={{ gunicorn_group }}
+            owner={{ application_name }}
             mode=0755
 
 - name: Add .forward file
   template: src=forward.j2
             dest=/home/{{ application_name }}/.forward
-            owner={{ gunicorn_user }}
-            group={{ gunicorn_group }}
+            owner={{ application_name }}
             mode=0640
 
 - name: Ensure exim is running.
