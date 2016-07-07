@@ -1,0 +1,8 @@
+[all:vars]
+env=staging
+
+[dbservers]
+ec2-52-87-212-47.compute-1.amazonaws.com
+
+[webservers]
+ec2-52-87-212-47.compute-1.amazonaws.com
