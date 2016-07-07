@@ -16,8 +16,8 @@ gunicorn_group: webapps
 # Nginx settings.
 nginx_access_log_file: "{{ application_log_dir }}/nginx_access.log"
 nginx_error_log_file: "{{ application_log_dir }}/nginx_error.log"
-nginx_static_dir: "{{ virtualenv_path }}/static/"
-nginx_media_dir: "{{ virtualenv_path }}/media/"
+nginx_static_dir: "{{ project_path }}/{{ application_name }}/static/"
+nginx_media_dir: "{{ project_path }}/{{ application_name }}/media/"
 
 
 # Django environment variables.
