@@ -2,7 +2,7 @@
 
 # Git settings.
 setup_git_repo: yes
-git_branch: django-1.7-upgrade-after-move
+git_branch: master
 
 
 # Database settings.
