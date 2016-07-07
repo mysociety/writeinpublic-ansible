@@ -1,11 +1,17 @@
-[all:vars]
+[staging]
+ec2-52-87-212-47.compute-1.amazonaws.com
+
+[staging:vars]
 env=staging
 
-[dbservers]
-ec2-52-87-212-47.compute-1.amazonaws.com
+[dbservers:children]
+staging
 
-[webservers]
-ec2-52-87-212-47.compute-1.amazonaws.com
+[webservers:children]
+staging
 
-[workers]
-ec2-52-87-212-47.compute-1.amazonaws.com
+[workers:children]
+staging
+
+[email:children]
+staging
