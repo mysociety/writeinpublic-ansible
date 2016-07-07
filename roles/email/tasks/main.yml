@@ -1,0 +1,39 @@
+---
+
+- name: Install exim
+  apt: name={{ item }} update_cache={{ update_apt_cache }} state=installed
+  with_items:
+    - exim4
+  tags: packages
+
+- name: Configure exim
+  template: src=update-exim4.conf.conf.j2 dest=/etc/exim4/update-exim4.conf.conf
+  notify: restart exim
+
+- name: Create the folder for the email scripts
+  file: path=/etc/exim4/virtual state=directory
+
+- name: Add virtual email config
+  template: src=virtual-incoming.j2 dest=/etc/exim4/virtual/{{ incoming_email_host }}
+  notify: restart exim
+
+- name: Create the folder for the email scripts
+  file: path={{ email_scripts_dir }}
+        owner={{ application_name }}
+        mode=0774
+        state=directory
+
+- name: Add handle_incoming_email script
+  template: src=handle_incoming_email.j2
+            dest={{ handle_incoming_email_script }}
+            owner={{ application_name }}
+            mode=0755
+
+- name: Add .forward file
+  template: src=forward.j2
+            dest=/home/{{ application_name }}/.forward
+            owner={{ application_name }}
+            mode=0640
+
+- name: Ensure exim is running.
+  service: name=exim4 state=started enabled=yes

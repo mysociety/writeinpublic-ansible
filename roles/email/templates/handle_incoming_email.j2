@@ -1,0 +1,12 @@
+#!/bin/sh
+
+set -e
+
+DJANGODIR={{ project_path }}
+
+# Activate the virtual environment.
+cd $DJANGODIR
+. {{ virtualenv_path }}/bin/activate
+. {{ virtualenv_path }}/bin/postactivate
+
+exec python manage.py handleemail

@@ -20,11 +20,9 @@ gunicorn_num_workers: 3
 # when developing. Set to 0 for unlimited requests (default).
 gunicorn_max_requests: 0
 
-gunicorn_timeout_seconds: 300
-
 
 # Nginx settings.
-nginx_server_name: 192.168.33.15.xip.io
+nginx_server_name: 52.87.212.47.xip.io
 
 
 # RabbitMQ settings.

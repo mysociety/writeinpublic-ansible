@@ -3,3 +3,9 @@
 - include: dbservers.yml
 
 - include: webservers.yml
+
+- include: worker.yml
+
+- include: email.yml
+
+- include: search.yml

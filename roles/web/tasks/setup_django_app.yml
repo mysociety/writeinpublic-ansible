@@ -3,6 +3,17 @@
 - name: Install packages required by the Django app inside virtualenv
   pip: virtualenv={{ virtualenv_path }} requirements={{ requirements_file }}
 
+- name: Install packages required in production by the Django app inside virtualenv
+  pip: virtualenv={{ virtualenv_path }} requirements={{ project_path }}/requirements-production.txt
+
+- name: Copy local_settings.py
+  template: src=local_settings.py.j2
+            dest={{ project_path }}/{{ application_name }}/local_settings.py
+            owner={{ gunicorn_user }}
+            group={{ gunicorn_group }}
+            mode=0640
+  notify: restart application
+
 - name: Run the Django syncdb command
   django_manage:
     command: syncdb
@@ -22,6 +33,17 @@
   environment: "{{ django_environment }}"
   when: run_django_db_migrations is defined and run_django_db_migrations
   tags: django.migrate
+
+- name: Copy seed_data.yaml
+  template: src=seed_data.yaml.j2 dest={{ virtualenv_path }}/seed_data.yaml owner={{ gunicorn_user }} group={{ gunicorn_group }}
+
+- name: Load seed data
+  django_manage:
+    command: "loaddata {{ virtualenv_path }}/seed_data.yaml"
+    app_path: "{{ project_path }}"
+    virtualenv: "{{ virtualenv_path }}"
+    settings: "{{ django_settings_file }}"
+  environment: "{{ django_environment }}"
 
 - name: Run Django collectstatic
   django_manage:

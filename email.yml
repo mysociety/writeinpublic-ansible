@@ -1,7 +1,7 @@
 ---
 
-- name: Provision a {{ application_name }} web server
-  hosts: webservers
+- name: Provision a {{ application_name }} email server
+  hosts: email
   become: yes
   become_user: root
   vars:
@@ -11,6 +11,4 @@
     - env_vars/{{ env }}.yml
 
   roles:
-    - base
-    - web
-    - nginx
+    - email

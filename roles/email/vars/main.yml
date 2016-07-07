@@ -1,0 +1,6 @@
+---
+email_scripts_dir: "{{ virtualenv_path }}/scripts/email"
+handle_incoming_email_script: "{{ email_scripts_dir }}/handle_incoming_email"
+incoming_email_host: "{{ nginx_server_name }}"
+virtualenv_path: "/webapps/{{ application_name }}"
+project_path: "{{ virtualenv_path }}/{{ project_name }}"

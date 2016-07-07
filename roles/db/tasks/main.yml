@@ -1,44 +1,18 @@
 ---
-
-- name: Add the PostgreSQL public GPG key to the apt repo
-  apt_key: url=https://www.postgresql.org/media/keys/ACCC4CF8.asc
-           state=present
-
-- name: Add PostgreSQL to the sources list
-  apt_repository: repo='deb http://apt.postgresql.org/pub/repos/apt/ {{ ansible_distribution_release }}-pgdg main'
-                  update_cache={{ update_apt_cache }}
-                  state=present
-
-- name: Install PostgreSQL
+- name: Install MySQL
   apt: name={{ item }} update_cache={{ update_apt_cache }} state=installed
   with_items:
-    - postgresql
-    - postgresql-contrib
-    - python-psycopg2
+    - mysql-common
+    - mysql-server
+    - libmysqlclient-dev
+    - python-mysqldb
   tags: packages
 
-- name: Ensure the PostgreSQL service is running
-  service: name=postgresql state=started enabled=yes
+- name: Ensure the MySQL service is running
+  service: name=mysql state=started enabled=yes
 
 - name: Ensure database is created
-  become_user: postgres
-  postgresql_db: name={{ db_name }}
-                 encoding='UTF-8'
-                 lc_collate='en_US.UTF-8'
-                 lc_ctype='en_US.UTF-8'
-                 template='template0'
-                 state=present
+  mysql_db: name={{ db_name }} state=present
 
 - name: Ensure user has access to the database
-  become_user: postgres
-  postgresql_user: db={{ db_name }}
-                   name={{ db_user }}
-                   password={{ db_password }}
-                   priv=ALL
-                   state=present
-
-- name: Ensure user does not have unnecessary privileges
-  become_user: postgres
-  postgresql_user: name={{ db_user }}
-                   role_attr_flags=NOSUPERUSER,NOCREATEDB
-                   state=present
+  mysql_user: name={{ db_user }} password={{ db_password }} state=present priv={{ db_name }}.*:ALL

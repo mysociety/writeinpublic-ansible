@@ -1,0 +1,4 @@
+# Exim filter
+if $h_to matches "@{{ incoming_email_host }}" then
+    pipe "{{ handle_incoming_email_script }}"
+endif

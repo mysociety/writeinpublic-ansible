@@ -1,0 +1,20 @@
+import os
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': '{{ db_name }}',
+        'USER': os.environ['DATABASE_USER'],
+        'PASSWORD': os.environ['DATABASE_PASSWORD'],
+        'HOST': '',                      # Empty for localhost through domain sockets or '127.0.0.1' for localhost through TCP.
+        'PORT': '',                      # Set to empty string for default.
+    }
+}
+
+SESSION_COOKIE_DOMAIN = '.{{ nginx_server_name }}'
+
+SECRET_KEY = os.environ['DJANGO_SECRET_KEY']
+
+MEDIA_ROOT = os.environ['MEDIA_ROOT']
+
+STATIC_ROOT = os.environ['STATIC_ROOT']
