@@ -3,3 +3,5 @@
 - include: dbservers.yml
 
 - include: webservers.yml
+
+- include: worker.yml
