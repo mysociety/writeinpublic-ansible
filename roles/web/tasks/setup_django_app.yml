@@ -33,6 +33,17 @@
   when: run_django_db_migrations is defined and run_django_db_migrations
   tags: django.migrate
 
+- name: Copy seed_data.yaml
+  template: src=seed_data.yaml.j2 dest={{ virtualenv_path }}/seed_data.yaml owner={{ gunicorn_user }} group={{ gunicorn_group }}
+
+- name: Load seed data
+  django_manage:
+    command: "loaddata {{ virtualenv_path }}/seed_data.yaml"
+    app_path: "{{ project_path }}"
+    virtualenv: "{{ virtualenv_path }}"
+    settings: "{{ django_settings_file }}"
+  environment: "{{ django_environment }}"
+
 - name: Run Django collectstatic
   django_manage:
     command: collectstatic
