@@ -18,3 +18,5 @@ SECRET_KEY = os.environ['DJANGO_SECRET_KEY']
 MEDIA_ROOT = os.environ['MEDIA_ROOT']
 
 STATIC_ROOT = os.environ['STATIC_ROOT']
+
+DEFAULT_URL_SCHEME = {% if enable_https %}'https'{% else %}'http'{% endif %}
