@@ -6,19 +6,26 @@ upstream {{ application_name }}_wsgi_server {
   server unix:{{ virtualenv_path }}/run/gunicorn.sock fail_timeout=0;
 }
 
- server {
-     listen      80;
-     server_name {{ nginx_server_name }};
-#     rewrite     ^ https://$server_name$request_uri? permanent;
-# }
-# 
-# server {
-#     listen              443;
-#     server_name         {{ nginx_server_name }};
-#     ssl on;
-#     ssl_certificate     {{ ssl_dest_dir }}/{{ application_name }}.crt;
-#     ssl_certificate_key {{ ssl_dest_dir }}/{{ application_name }}.key;
-#     ssl_protocols       TLSv1 TLSv1.1 TLSv1.2;
+{% if enable_https %}
+server {
+    listen 80;
+    server_name {{ nginx_server_name }} *.{{ nginx_server_name }};
+    return 301 https://$host$request_uri;
+}
+{% endif %}
+
+server {
+  {% if enable_https %}
+    listen 443;
+    ssl on;
+    ssl_certificate {{ ssl_dest_dir }}/{{ application_name }}.crt;
+    ssl_certificate_key {{ ssl_dest_dir }}/{{ application_name }}.key;
+    ssl_protocols TLSv1 TLSv1.1 TLSv1.2;
+  {% else %}
+    listen 80;
+  {% endif %}
+
+    server_name {{ nginx_server_name }} *.{{ nginx_server_name }};
 
     client_max_body_size 4G;
 
