@@ -10,6 +10,10 @@
   template: src=update-exim4.conf.conf.j2 dest=/etc/exim4/update-exim4.conf.conf
   notify: restart exim
 
+- name: Run update-exim4.conf
+  shell: update-exim4.conf
+  notify: restart exim
+
 - name: Create the folder for the email scripts
   file: path=/etc/exim4/virtual state=directory
 
