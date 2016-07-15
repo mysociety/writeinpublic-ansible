@@ -17,3 +17,10 @@
   tags:
     - celery
     - deploy
+
+- name: Restart the celery beat app
+  supervisorctl: name=celery_beat state=restarted
+  when: supervisor_applications.stdout.find('celery_beat') != -1
+  tags:
+    - celery
+    - deploy

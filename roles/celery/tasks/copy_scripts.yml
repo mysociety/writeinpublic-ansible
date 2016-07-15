@@ -17,3 +17,12 @@
             mode=0755
   tags:
     - celery
+
+- name: Create the celery beat script file
+  template: src=celery_beat_start.j2
+            dest={{ celery_scripts_dir }}/celery_beat_start
+            owner={{ celery_user }}
+            group={{ celery_group }}
+            mode=0755
+  tags:
+    - celery
