@@ -15,3 +15,6 @@
 - name: Add SSH keys for deploy users
   authorized_key: user=deploy key=https://github.com/{{ item }}.keys
   with_items: "{{ deploy_github_users }}"
+
+- name: Allow passwordless sudo
+  lineinfile: "dest=/etc/sudoers state=present regexp='^%sudo' line='%sudo ALL=(ALL) NOPASSWD: ALL'"
