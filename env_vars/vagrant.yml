@@ -4,6 +4,8 @@
 setup_git_repo: yes
 git_branch: master
 
+# Deploy users - these are GitHub handles and uses the public keys in https://github.com/${user}.keys
+deploy_github_users: []
 
 # Database settings.
 db_user: "{{ application_name }}"

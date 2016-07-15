@@ -8,3 +8,10 @@
 
 - name: Add the application user to the application group
   user: name={{ gunicorn_user }} group={{ gunicorn_group }} state=present
+
+- name: Create the deploy user
+  user: name=deploy group=sudo shell=/bin/bash
+
+- name: Add SSH keys for deploy users
+  authorized_key: user=deploy key=https://github.com/{{ item }}.keys
+  with_items: "{{ deploy_github_users }}"
