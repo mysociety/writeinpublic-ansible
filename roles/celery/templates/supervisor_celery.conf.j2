@@ -1,5 +1,5 @@
-[program:{{ celery_application_name }}]
-command={{ celery_scripts_dir }}/{{ celery_application_name }}_start
+[program:celery_worker]
+command={{ celery_scripts_dir }}/celery_worker_start
 
 autostart=true
 autorestart=true
