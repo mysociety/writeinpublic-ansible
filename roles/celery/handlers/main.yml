@@ -1,7 +1,5 @@
 ---
 
-- name: restart celery worker
-  supervisorctl: name=celery_worker state=restarted
-
-- name: restart celery beat
-  supervisorctl: name=celery_beat state=restarted
+- name: restart celery
+  supervisorctl: name=celery_{{ item }} state=restarted
+  with_items: "{{ celery_programs }}"

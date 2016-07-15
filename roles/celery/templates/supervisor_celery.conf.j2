@@ -1,5 +1,6 @@
-[program:celery_worker]
-command={{ celery_scripts_dir }}/celery_worker_start
+{% for program in celery_programs %}
+[program:celery_{{ program }}]
+command={{ celery_scripts_dir }}/celery_{{ program }}_start
 
 autostart=true
 autorestart=true
@@ -8,14 +9,4 @@ user={{ celery_user }}
 
 stdout_logfile={{ celery_log_file }}
 redirect_stderr = true
-
-[program:celery_beat]
-command={{ celery_scripts_dir }}/celery_beat_start
-
-autostart=true
-autorestart=true
-
-user={{ celery_user }}
-
-stdout_logfile={{ celery_log_file }}
-redirect_stderr = true
+{% endfor %}
