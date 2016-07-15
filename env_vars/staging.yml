@@ -2,7 +2,7 @@
 
 # Git settings.
 setup_git_repo: yes
-git_branch: master
+git_branch: alpaca
 
 
 # Database settings.
@@ -22,7 +22,7 @@ gunicorn_max_requests: 0
 
 
 # Nginx settings.
-nginx_server_name: 52.87.212.47.xip.io
+nginx_server_name: ap-staging.writeinpublic.com
 
 
 # RabbitMQ settings.
