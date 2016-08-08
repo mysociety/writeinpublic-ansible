@@ -1,5 +1,5 @@
 [staging]
-ec2-52-87-212-47.compute-1.amazonaws.com
+ap-staging.writeinpublic.com
 
 [staging:vars]
 env=staging
