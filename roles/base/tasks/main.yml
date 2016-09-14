@@ -21,6 +21,7 @@
     - ntp
     - htop
     - git
+    - libffi-dev
     - libpq-dev
     - python-dev
     - python-pip
