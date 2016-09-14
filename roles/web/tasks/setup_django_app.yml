@@ -8,7 +8,7 @@
 
 - name: Copy local_settings.py
   template: src=local_settings.py.j2
-            dest={{ project_path }}/{{ application_name }}/local_settings.py
+            dest={{ project_path }}/writeit/local_settings.py
             owner={{ gunicorn_user }}
             group={{ gunicorn_group }}
             mode=0640
