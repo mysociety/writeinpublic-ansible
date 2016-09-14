@@ -1,20 +1,17 @@
-[staging]
+[original_ec2_host]
 ap-staging.writeinpublic.com
 
-[staging:vars]
-env=staging
-
 [dbservers:children]
-staging
+original_ec2_host
 
 [webservers:children]
-staging
+original_ec2_host
 
 [workers:children]
-staging
+original_ec2_host
 
 [email:children]
-staging
+original_ec2_host
 
 [search:children]
-staging
+original_ec2_host

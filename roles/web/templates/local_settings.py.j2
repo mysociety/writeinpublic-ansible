@@ -1,5 +1,15 @@
 import os
 
+{% if debug %}
+DEBUG = True
+TASTYPIE_FULL_DEBUG = True
+TEMPLATE_DEBUG = True
+{% else %}
+DEBUG = False
+TASTYPIE_FULL_DEBUG = False
+TEMPLATE_DEBUG = False
+{% endif %}
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',

@@ -8,8 +8,8 @@
   vars:
     - setup_git_repo: yes
     - update_apt_cache: yes
-    - application_name: writeit
-    - debug: yes
+    - application_name: writeit-live
+    - debug: no
   vars_files:
     - env_vars/base.yml
     - env_vars/vagrant.yml

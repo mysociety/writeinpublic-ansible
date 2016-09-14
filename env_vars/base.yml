@@ -3,7 +3,6 @@
 git_repo: https://github.com/ciudadanointeligente/write-it.git
 
 project_name: writeinpublic
-application_name: writeit
 
 enable_https: False
 
