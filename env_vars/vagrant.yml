@@ -56,3 +56,8 @@ run_django_compilemessages: yes
 email_host: localhost
 email_host_user:
 email_host_password:
+
+admins:
+  -
+    - 'Random Administrators'
+    - 'adminstrators@example.com'

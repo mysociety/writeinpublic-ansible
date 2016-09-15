@@ -34,3 +34,11 @@ STATIC_ROOT = os.environ['STATIC_ROOT']
 DEFAULT_URL_SCHEME = {% if enable_https %}'https'{% else %}'http'{% endif %}
 
 DEFAULT_FROM_DOMAIN = '{{ nginx_server_name }}'
+
+{% if admins %}
+ADMINS = [
+  {% for admin_real_name, admin_email in admins %}
+    ('{{ admin_real_name }}', '{{ admin_email }}'),
+  {% endfor %}
+]
+{% endif %}
