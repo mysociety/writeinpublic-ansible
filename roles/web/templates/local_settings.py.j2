@@ -42,3 +42,11 @@ ADMINS = [
   {% endfor %}
 ]
 {% endif %}
+
+{% if default_emails_from %}
+DEFAULT_FROM_EMAIL = '{{ default_emails_from }}'
+{% endif %}
+
+{% if error_emails_from %}
+SERVER_EMAIL = '{{ error_emails_from }}'
+{% endif %}

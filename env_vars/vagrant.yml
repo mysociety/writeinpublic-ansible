@@ -63,3 +63,7 @@ admins:
   -
     - 'Random Administrators'
     - 'adminstrators@example.com'
+
+error_emails_from: support@namehbeanha.com
+
+default_emails_from: support@namehbeanha.com
