@@ -13,6 +13,9 @@
 - name: Update /etc/mailname
   copy: content="{{ incoming_email_host }}\n" dest=/etc/mailname
 
+- name: Update the virtual domain configuration
+  copy: src=router_350_exim4-config_vdom_aliases dest=/etc/exim4/conf.d/router/350_exim4-config_vdom_aliases
+
 - name: Run update-exim4.conf
   shell: update-exim4.conf
   notify: restart exim
