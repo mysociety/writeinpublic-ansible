@@ -64,6 +64,6 @@ admins:
     - 'Random Administrators'
     - 'adminstrators@example.com'
 
-error_emails_from: support@namehbeanha.com
+error_emails_from: support@example.com
 
-default_emails_from: support@namehbeanha.com
+default_emails_from: support@example.com
