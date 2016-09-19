@@ -67,3 +67,7 @@ admins:
 error_emails_from: support@example.com
 
 default_emails_from: support@example.com
+
+support_email_recipients:
+  - realperson@example.com
+  - anotherrealperson@example.com
