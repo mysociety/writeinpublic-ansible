@@ -52,3 +52,8 @@ DEFAULT_FROM_EMAIL = '{{ default_emails_from }}'
 {% if error_emails_from %}
 SERVER_EMAIL = '{{ error_emails_from }}'
 {% endif %}
+
+{% if google_oauth_client_id %}
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '{{ google_oauth_client_id }}'
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = '{{ google_oauth_client_secret }}'
+{% endif %}
