@@ -1,2 +1,2 @@
-env_vars/production.yml diff=ansible-vault
-env_vars/staging.yml diff=ansible-vault
+env_vars/production.yml diff=ansible-vault merge=binary
+env_vars/staging.yml diff=ansible-vault merge=binary
