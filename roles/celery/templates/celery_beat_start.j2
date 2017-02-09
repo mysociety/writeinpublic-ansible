@@ -9,4 +9,4 @@ cd $DJANGODIR
 
 # Programs meant to be run under supervisor should not daemonize themselves
 # (do not use --daemon).
-exec python manage.py celery beat
+exec celery -A writeit beat

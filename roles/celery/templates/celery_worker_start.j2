@@ -9,4 +9,4 @@ cd $DJANGODIR
 
 # Programs meant to be run under supervisor should not daemonize themselves
 # (do not use --daemon).
-exec python manage.py celery worker --concurrency={{ celery_num_workers }}
+exec celery -A writeit worker --concurrency={{ celery_num_workers }}
