@@ -57,3 +57,7 @@ SERVER_EMAIL = '{{ error_emails_from }}'
 SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '{{ google_oauth_client_id }}'
 SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = '{{ google_oauth_client_secret }}'
 {% endif %}
+
+{% if google_analytics_property_id %}
+GOOGLE_ANALYTICS_PROPERTY_ID = '{{ google_analytics_property_id }}'
+{% endif %}
