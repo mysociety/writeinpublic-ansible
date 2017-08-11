@@ -71,3 +71,5 @@ default_emails_from: support@example.com
 support_email_recipients:
   - realperson@example.com
   - anotherrealperson@example.com
+
+google_analytics_property_id: ''
